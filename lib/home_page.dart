@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'InputSpace.dart';
-import 'ButtonAdd.dart';
-import 'ButtonClear.dart';
+import 'input_components/button_add.dart';
+import 'input_components/button_clear.dart';
+import 'input_components/input_space.dart';
+import 'todolist_components/todolist_contanier.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,7 +28,8 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [ButtonAdd(), ButtonClear()],
-            )
+            ),
+            ToDoContainer(),
           ],
         ));
   }
