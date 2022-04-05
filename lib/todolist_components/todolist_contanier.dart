@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'to_do.dart';
+
 class ToDoContainer extends StatelessWidget {
   const ToDoContainer({Key? key}) : super(key: key);
 
@@ -17,6 +19,9 @@ class ToDoContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           // color: Color.fromARGB(255, 0, 0, 0),
         ),
+        child: Column(children: [
+          ToDO(),
+        ]),
       ),
     );
   }

@@ -9,8 +9,6 @@ class ButtonAdd extends StatefulWidget {
 }
 
 class _ButtonAddState extends State<ButtonAdd> {
-  TextBloc _bloc = TextBloc();
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,9 +23,7 @@ class _ButtonAddState extends State<ButtonAdd> {
           onPrimary: const Color.fromARGB(255, 5, 156, 156),
         ),
         child: const Text('Add'),
-        onPressed: () {
-          _bloc.inputsink.add(TextEvent.event_add);
-        },
+        onPressed: () {},
       ),
     );
   }

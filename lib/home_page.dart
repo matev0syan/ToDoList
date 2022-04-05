@@ -4,9 +4,14 @@ import 'input_components/button_clear.dart';
 import 'input_components/input_space.dart';
 import 'todolist_components/todolist_contanier.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

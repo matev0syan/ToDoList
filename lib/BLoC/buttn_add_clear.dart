@@ -15,9 +15,9 @@ class TextBloc {
 
   void _eventext(TextEvent event) {
     if (event == TextEvent.event_add)
-      _text = 'Add textt';
+      _text = 'Add text';
     else if (event == TextEvent.event_clear)
-      _text = '0';
+      _text = '';
     else
       throw Exception("wrong");
     _output.sink.add(_text);
