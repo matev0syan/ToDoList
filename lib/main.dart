@@ -16,8 +16,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,40 +35,10 @@ class _MyAppState extends State<MyApp> {
             ),
             body: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextField(
-                    controller: _controller,
-                    decoration: InputDecoration(
-                        hintText: 'Add event',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20)),
-                        fillColor: Color.fromARGB(255, 5, 156, 156),
-                        filled: true),
-                  ),
-                ),
+                InputSpace(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ButtonAdd(),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 20, 60, 10),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(120, 40),
-                          side: const BorderSide(
-                            color: Color.fromARGB(255, 5, 156, 156),
-                          ),
-                          primary: const Color.fromARGB(255, 0, 0, 0),
-                          onPrimary: const Color.fromARGB(255, 5, 156, 156),
-                        ),
-                        child: const Text('Clear'),
-                        onPressed: () {
-                          _controller.clear();
-                        },
-                      ),
-                    ),
-                  ],
+                  children: [ButtonAdd(), ButtonClear()],
                 ),
                 ToDoContainer(),
               ],

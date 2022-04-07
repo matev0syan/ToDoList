@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import '../BLoC/buttn_add_clear.dart';
+import '../BLoC/buttn_color.dart';
 
-class ButtonAdd extends StatefulWidget {
-  const ButtonAdd({Key? key}) : super(key: key);
+class ButtonAdd extends StatelessWidget {
+  const ButtonAdd({
+    Key? key,
+  }) : super(key: key);
 
-  @override
-  State<ButtonAdd> createState() => _ButtonAddState();
-}
-
-class _ButtonAddState extends State<ButtonAdd> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -22,7 +19,7 @@ class _ButtonAddState extends State<ButtonAdd> {
           primary: const Color.fromARGB(255, 0, 0, 0),
           onPrimary: const Color.fromARGB(255, 5, 156, 156),
         ),
-        child: const Text('Add'),
+        child: Text('Add'),
         onPressed: () {},
       ),
     );

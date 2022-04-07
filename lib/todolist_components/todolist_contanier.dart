@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todolist/input_components/input_space.dart';
 
 import 'to_do.dart';
 
@@ -20,7 +21,9 @@ class ToDoContainer extends StatelessWidget {
           // color: Color.fromARGB(255, 0, 0, 0),
         ),
         child: Column(children: [
-          ToDO(),
+          ToDO(
+            text1: 'Text',
+          ),
         ]),
       ),
     );

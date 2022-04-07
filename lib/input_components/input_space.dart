@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../BLoC/buttn_add_clear.dart';
+var inputtext = TextEditingController();
 
 class InputSpace extends StatefulWidget {
   const InputSpace({Key? key}) : super(key: key);
@@ -10,15 +10,13 @@ class InputSpace extends StatefulWidget {
 }
 
 class _InputSpaceState extends State<InputSpace> {
-  var _controller = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<String>(builder: (context, snapshot) {
       return Padding(
         padding: const EdgeInsets.all(15.0),
         child: TextField(
-          controller: _controller,
+          controller: inputtext,
           decoration: InputDecoration(
               hintText: 'Add event',
               border:

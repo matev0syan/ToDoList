@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import '../BLoC/buttn_add_clear.dart';
+import '../BLoC/buttn_color.dart';
 import 'package:todolist/input_components/input_space.dart';
 
-class ButtonClear extends StatefulWidget {
+class ButtonClear extends StatelessWidget {
   const ButtonClear({Key? key}) : super(key: key);
 
-  @override
-  State<ButtonClear> createState() => _ButtonClearState();
-}
-
-class _ButtonClearState extends State<ButtonClear> {
-  var _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +20,7 @@ class _ButtonClearState extends State<ButtonClear> {
         ),
         child: const Text('Clear'),
         onPressed: () {
-          _controller.clear();
+          inputtext.clear();
         },
       ),
     );
