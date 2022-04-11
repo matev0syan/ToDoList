@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../BLoC/buttn_color.dart';
 
 class ButtonAdd extends StatelessWidget {
   const ButtonAdd({
@@ -9,7 +8,7 @@ class ButtonAdd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(60, 20, 10, 10),
+      padding: const EdgeInsets.fromLTRB(60, 20, 0, 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(120, 40),
@@ -19,7 +18,7 @@ class ButtonAdd extends StatelessWidget {
           primary: const Color.fromARGB(255, 0, 0, 0),
           onPrimary: const Color.fromARGB(255, 5, 156, 156),
         ),
-        child: Text('Add'),
+        child: const Text('Add'),
         onPressed: () {},
       ),
     );

@@ -21,7 +21,7 @@ class _InputSpaceState extends State<InputSpace> {
               hintText: 'Add event',
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-              fillColor: Color.fromARGB(255, 5, 156, 156),
+              fillColor: const Color.fromARGB(255, 5, 156, 156),
               filled: true),
         ),
       );

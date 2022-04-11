@@ -10,63 +10,37 @@ class ToDO extends StatefulWidget {
 }
 
 class _ToDOState extends State<ToDO> {
-  ColorBloc _bloc = ColorBloc();
+  List<String> ToDoAdd = ['not text'];
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<Color>(
-      stream: _bloc.outputstream,
-      initialData: Colors.black,
-      builder: (context, snapshot) => Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: AnimatedContainer(
-            duration: Duration(milliseconds: 500),
-            constraints: BoxConstraints(minHeight: 80),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: snapshot.data,
-              border: Border.all(
-                color: const Color.fromARGB(255, 5, 156, 156),
-              ),
-              borderRadius: BorderRadius.circular(25),
-              // color: Color.fromARGB(255, 0, 0, 0),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    widget.text1,
-                    style: TextStyle(
-                      color: const Color.fromARGB(255, 5, 156, 156),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          _bloc.inputsink.add(ColorEvent.event_green);
-                        },
-                        child: Icon(
-                          Icons.check_box_outlined,
-                          color: const Color.fromARGB(255, 5, 156, 156),
+    return ListView.builder(
+        shrinkWrap: true,
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+              color: const Color.fromARGB(255, 5, 156, 156),
+              borderOnForeground: true,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('$ToDoAdd'),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.done_outline),
+                          onPressed: () {},
                         ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          _bloc.inputsink.add(ColorEvent.event_red);
-                        },
-                        child: Icon(
-                          Icons.delete_outline,
-                          color: const Color.fromARGB(255, 5, 156, 156),
+                        IconButton(
+                          icon: Icon(Icons.delete_outline),
+                          onPressed: () {},
                         ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )),
-      ),
-    );
+                      ],
+                    )
+                  ],
+                ),
+              ));
+        });
   }
 }

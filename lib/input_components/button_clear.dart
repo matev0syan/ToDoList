@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../BLoC/buttn_color.dart';
+import 'package:todolist/BLoC/buttn_color.dart';
 import 'package:todolist/input_components/input_space.dart';
 
 class ButtonClear extends StatelessWidget {
@@ -8,7 +8,7 @@ class ButtonClear extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 20, 60, 10),
+      padding: const EdgeInsets.fromLTRB(0, 20, 60, 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(120, 40),
@@ -19,9 +19,7 @@ class ButtonClear extends StatelessWidget {
           onPrimary: const Color.fromARGB(255, 5, 156, 156),
         ),
         child: const Text('Clear'),
-        onPressed: () {
-          inputtext.clear();
-        },
+        onPressed: ClearText,
       ),
     );
   }
