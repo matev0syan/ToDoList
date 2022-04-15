@@ -7,6 +7,31 @@ void ClearText() {
   inputtext.clear();
 }
 
+// enum ButtonEvent { textAdd, textDelete }
+
+// class ToDoBloc {
+//   final _statetStream = StreamController<String>();
+//   StreamSink<String> get buttonsink => _statetStream.sink;
+//   Stream<String> get buttonstream => _statetStream.stream;
+
+//   final _eventStream = StreamController<ButtonEvent>();
+//   StreamSink<ButtonEvent> get eventsink => _eventStream.sink;
+//   Stream<ButtonEvent> get eventstream => _eventStream.stream;
+
+//   ToDoBloc() {
+//     List todos = [];
+//     int index = 0;
+//     eventstream.listen((event) {
+//       if (event == ButtonEvent.textAdd)
+//         todos[0] = 'hello';
+//       else if (event == ButtonEvent.textDelete)
+//         todos[0] = 'reset';
+//       else
+//         print('eror');
+//       buttonsink.add(todos[0]);
+//     });
+//   }
+// }
 
 
 

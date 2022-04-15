@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/BLoC/buttn_color.dart';
+import 'package:todolist/BLoC/example.dart';
 
 class ToDO extends StatefulWidget {
   const ToDO({Key? key, this.text1 = ''}) : super(key: key);
@@ -10,7 +10,6 @@ class ToDO extends StatefulWidget {
 }
 
 class _ToDOState extends State<ToDO> {
-  List<String> ToDoAdd = ['not text'];
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -25,7 +24,7 @@ class _ToDOState extends State<ToDO> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('$ToDoAdd'),
+                    Text('not text'),
                     Row(
                       children: [
                         IconButton(
