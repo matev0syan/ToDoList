@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todolist/BLoC/todo_bloc.dart';
+import 'package:todolist/input_components/input_space.dart';
 
-import '../BLoC/example.dart';
+class ButtonAdd extends StatefulWidget {
+  const ButtonAdd({Key? key}) : super(key: key);
 
-class ButtonAdd extends StatelessWidget {
-  const ButtonAdd({
-    Key? key,
-  }) : super(key: key);
+  @override
+  State<ButtonAdd> createState() => _ButtonAddState();
+}
 
+class _ButtonAddState extends State<ButtonAdd> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(60, 20, 0, 10),
+      padding: const EdgeInsets.fromLTRB(60, 20, 20, 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(120, 40),
@@ -21,7 +25,9 @@ class ButtonAdd extends StatelessWidget {
           onPrimary: const Color.fromARGB(255, 5, 156, 156),
         ),
         child: const Text('Add'),
-        onPressed: () {},
+        onPressed: () {
+          context.read<TodoBloc>().add(ToDoAdd());
+        },
       ),
     );
   }

@@ -1,20 +1,10 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:todolist/todolist_components/to_do.dart';
+part of 'todo_bloc.dart';
 
-class ToDoEvent {}
+@immutable
+abstract class TodoEvent {}
 
-class ButtonAdd extends ToDoEvent {
-  String userAdd = '';
-  ButtonAdd({required this.userAdd});
-}
+class ToDoAdd extends TodoEvent {}
 
-class ButtonDelete extends ToDoEvent {
-  int indexs = 0;
-  ButtonDelete({required this.indexs});
-}
+class ToDoDelete extends TodoEvent {}
 
-class ButtonColorDone extends ToDoEvent {
-  Color itemColor = Colors.black;
-  ButtonColorDone({required this.itemColor});
-}
+class ToDoClear extends TodoEvent {}

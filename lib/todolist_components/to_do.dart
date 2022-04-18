@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/BLoC/example.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todolist/BLoC/todo_bloc.dart';
 
 class ToDO extends StatefulWidget {
   const ToDO({Key? key, this.text1 = ''}) : super(key: key);
@@ -12,34 +13,44 @@ class ToDO extends StatefulWidget {
 class _ToDOState extends State<ToDO> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        itemCount: 1,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-              color: const Color.fromARGB(255, 5, 156, 156),
-              borderOnForeground: true,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('not text'),
-                    Row(
+    return BlocBuilder<TodoBloc, TodoState>(
+      builder: (context, state) {
+        return ListView.builder(
+            shrinkWrap: true,
+            itemCount: state.text,
+            itemBuilder: (BuildContext context, int index) {
+              return Card(
+                  color: const Color.fromARGB(255, 5, 156, 156),
+                  borderOnForeground: true,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                          icon: Icon(Icons.done_outline),
-                          onPressed: () {},
+                        BlocBuilder<TodoBloc, TodoState>(
+                          builder: (context, state) {
+                            return Text(state.text.toString());
+                          },
                         ),
-                        IconButton(
-                          icon: Icon(Icons.delete_outline),
-                          onPressed: () {},
-                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.done_outline),
+                              onPressed: () {},
+                            ),
+                            IconButton(
+                              icon: Icon(Icons.delete_outline),
+                              onPressed: () {
+                                context.read<TodoBloc>().add(ToDoDelete());
+                              },
+                            ),
+                          ],
+                        )
                       ],
-                    )
-                  ],
-                ),
-              ));
-        });
+                    ),
+                  ));
+            });
+      },
+    );
   }
 }
