@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/input_components/input_space.dart';
-
 import 'to_do.dart';
 
 class ToDoContainer extends StatelessWidget {
@@ -11,15 +9,15 @@ class ToDoContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        constraints: BoxConstraints(minHeight: 680),
+        constraints: const BoxConstraints(minHeight: 680),
         width: double.infinity,
         decoration: BoxDecoration(
           border: Border.all(
             color: const Color.fromARGB(255, 5, 156, 156),
           ),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: ToDO(),
+        child: const ToDO(),
       ),
     );
   }

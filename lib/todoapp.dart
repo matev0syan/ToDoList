@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'input_components/button_add.dart';
 import 'input_components/button_clear.dart';
 import 'input_components/input_space.dart';
@@ -11,9 +10,9 @@ class ToDoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
-        title: Center(
+        title: const Center(
             child: Text(
           'To Do List',
           style: TextStyle(
@@ -21,19 +20,19 @@ class ToDoApp extends StatelessWidget {
             color: Color.fromARGB(255, 5, 156, 156),
           ),
         )),
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
       body: Column(
         children: [
-          InputSpace(),
+          const InputSpace(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+            children: const [
               ButtonAdd(),
               ButtonClear(),
             ],
           ),
-          ToDoContainer(),
+          const ToDoContainer(),
         ],
       ),
     );

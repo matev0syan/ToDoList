@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todolist/BLoC/todo_bloc.dart';
 import 'package:todolist/input_components/input_space.dart';
 
 class ButtonClear extends StatefulWidget {

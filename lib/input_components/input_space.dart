@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/bloc/todo_bloc.dart';
 
 var inputtext = TextEditingController();
-String UserAdd = '';
 
 class InputSpace extends StatefulWidget {
   const InputSpace({Key? key}) : super(key: key);
@@ -19,9 +17,7 @@ class _InputSpaceState extends State<InputSpace> {
       return Padding(
         padding: const EdgeInsets.all(15.0),
         child: TextField(
-          onChanged: (String value) {
-            UserAdd = value;
-          },
+          onChanged: (String value) {},
           controller: inputtext,
           decoration: InputDecoration(
               hintText: 'Add event',

@@ -17,7 +17,7 @@ class _ToDOState extends State<ToDO> {
       builder: (context, state) {
         return ListView.builder(
             shrinkWrap: true,
-            itemCount: state.text,
+            itemCount: state.text.length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
                   color: const Color.fromARGB(255, 5, 156, 156),
@@ -29,17 +29,18 @@ class _ToDOState extends State<ToDO> {
                       children: [
                         BlocBuilder<TodoBloc, TodoState>(
                           builder: (context, state) {
-                            return Text(state.text.toString());
+                            return Text("${state.index}");
                           },
                         ),
+                        Text("${state.text}"),
                         Row(
                           children: [
                             IconButton(
-                              icon: Icon(Icons.done_outline),
+                              icon: const Icon(Icons.done_outline),
                               onPressed: () {},
                             ),
                             IconButton(
-                              icon: Icon(Icons.delete_outline),
+                              icon: const Icon(Icons.delete_outline),
                               onPressed: () {
                                 context.read<TodoBloc>().add(ToDoDelete());
                               },
