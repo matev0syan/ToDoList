@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todolist/input_components/input_space.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../BLoC/todo_bloc.dart';
 
 class ButtonClear extends StatefulWidget {
   const ButtonClear({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _ButtonClearState extends State<ButtonClear> {
         ),
         child: const Text('Clear'),
         onPressed: () {
-          inputtext.clear();
+          context.read<TodoBloc>().add(ToDoClear());
         },
       ),
     );

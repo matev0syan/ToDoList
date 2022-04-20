@@ -27,18 +27,16 @@ class _ToDOState extends State<ToDO> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        BlocBuilder<TodoBloc, TodoState>(
-                          builder: (context, state) {
-                            return Text("${state.index}");
-                          },
-                        ),
-                        Text("${state.text}"),
+                        Text("${state.index[index]}"),
+                        Text("${state.text[index]}"),
                         Row(
                           children: [
-                            IconButton(
-                              icon: const Icon(Icons.done_outline),
-                              onPressed: () {},
-                            ),
+                            // IconButton(
+                            //   icon: const Icon(Icons.done_outline),
+                            //   onPressed: () {
+                            //     context.read<TodoBloc>().add(ToDoDone());
+                            //   },
+                            // ),
                             IconButton(
                               icon: const Icon(Icons.delete_outline),
                               onPressed: () {
