@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-var inputtext = TextEditingController();
+var inputText = TextEditingController();
 
 class InputSpace extends StatefulWidget {
   const InputSpace({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _InputSpaceState extends State<InputSpace> {
         padding: const EdgeInsets.all(15.0),
         child: TextField(
           onChanged: (String value) {},
-          controller: inputtext,
+          controller: inputText,
           decoration: InputDecoration(
               hintText: 'Add event',
               border:

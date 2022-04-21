@@ -17,7 +17,7 @@ class _ToDOState extends State<ToDO> {
       builder: (context, state) {
         return ListView.builder(
             shrinkWrap: true,
-            itemCount: state.text.length,
+            itemCount: state.toDoAdd.length,
             itemBuilder: (BuildContext context, int index) {
               return Card(
                   color: const Color.fromARGB(255, 5, 156, 156),
@@ -28,18 +28,21 @@ class _ToDOState extends State<ToDO> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("${state.index[index]}"),
-                        Text("${state.text[index]}"),
+                        Text("${state.toDoAdd[index]}"),
                         Row(
                           children: [
-                            // IconButton(
-                            //   icon: const Icon(Icons.done_outline),
-                            //   onPressed: () {
-                            //     context.read<TodoBloc>().add(ToDoDone());
-                            //   },
-                            // ),
+                            IconButton(
+                              icon: const Icon(Icons.done_outline),
+                              onPressed: () {
+                                indexs = index;
+                                context.read<TodoBloc>().add(ToDoDone());
+                              },
+                            ),
                             IconButton(
                               icon: const Icon(Icons.delete_outline),
                               onPressed: () {
+                                indexs = index;
+
                                 context.read<TodoBloc>().add(ToDoDelete());
                               },
                             ),

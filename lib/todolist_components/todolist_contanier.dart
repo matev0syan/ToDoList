@@ -9,7 +9,7 @@ class ToDoContainer extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-        constraints: const BoxConstraints(minHeight: 680),
+        height: MediaQuery.of(context).size.height / 1.5,
         width: double.infinity,
         decoration: BoxDecoration(
           border: Border.all(
