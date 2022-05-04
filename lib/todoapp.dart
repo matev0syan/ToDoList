@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'input_components/button_add.dart';
-import 'input_components/button_clear.dart';
-import 'input_components/input_space.dart';
+import 'todolist_components/input_space.dart';
 import 'todolist_components/todolist_contanier.dart';
 
 class ToDoApp extends StatelessWidget {
@@ -24,14 +22,7 @@ class ToDoApp extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const InputSpace(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              ButtonAdd(),
-              ButtonClear(),
-            ],
-          ),
+         InputSpace(),
           const ToDoContainer(),
         ],
       ),

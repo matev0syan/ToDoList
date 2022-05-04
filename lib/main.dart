@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todolist/BLoC/todo_bloc.dart';
 import 'todoapp.dart';
+import 'package:todolist/bloc/todo_bloc.dart';
 
 void main() => runApp(const MyApp());
 
