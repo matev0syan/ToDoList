@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todolist/todolist_components/toto_list.dart';
-
-import '../bloc/todo_bloc.dart';
+import 'package:todolist/bloc/todo_item.dart';
+import 'package:todolist/bloc/todos_bloc.dart';
+import 'package:todolist/todolist_components/todo_list.dart';
 
 final inputText = TextEditingController();
 
@@ -42,12 +42,13 @@ class InputSpace extends StatelessWidget {
                 ),
                 child: const Text('Add'),
                 onPressed: () {
-                  ind = 1;
-                  indexs++;
-                  context.read<TodoBloc>().add(ToDoAdd(input: inputText.text));
-                  inputText.clear();
-                  // BlocProvider.of<TodoBloc>(context)
-                  //     .add(ToDoAdd(input: inputText.text));
+                  if (inputText.text != '') {
+                    print('object');
+                    var todo =
+                        Todo(id: inputText.value.text, text: inputText.text);
+                    context.read<TodoBloc>().add(AddTodo(todo: todo));
+                    inputText.clear();
+                  }
                 },
               ),
             ),
