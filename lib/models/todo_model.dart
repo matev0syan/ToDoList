@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
+@immutable
 class Todo extends Equatable {
-  final String id;
+  final int id;
   final String text;
   bool? iscomplected;
   bool? iscanceled;
@@ -16,8 +18,7 @@ class Todo extends Equatable {
     iscomplected = iscomplected ?? false;
   }
 
-  Todo copyWith(
-      {String? id, String? text, bool? iscomplected, bool? iscanceled}) {
+  Todo copyWith({int? id, String? text, bool? iscomplected, bool? iscanceled}) {
     return Todo(
       id: id ?? this.id,
       text: text ?? this.text,
@@ -33,18 +34,4 @@ class Todo extends Equatable {
         iscomplected,
         iscanceled,
       ];
-  static List<Todo> todos = [
-    Todo(
-      id: '1',
-      text: "Sample ToDo 1",
-    ),
-    Todo(
-      id: '3',
-      text: "Sample ToDo 2",
-    ),
-    Todo(
-      id: '3',
-      text: "Sample ToDo 3",
-    ),
-  ];
 }

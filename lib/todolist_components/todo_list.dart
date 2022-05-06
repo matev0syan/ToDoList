@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todolist/bloc/todo_item.dart';
+import 'package:todolist/models/todo_model.dart';
 import '../bloc/todos_bloc.dart';
-
-int ind = 0;
-Color colortodo = Color.fromARGB(255, 5, 156, 156);
 
 class ToDO extends StatefulWidget {
   const ToDO({Key? key, this.text1 = ''}) : super(key: key);
@@ -19,23 +16,25 @@ class _ToDOState extends State<ToDO> {
   Widget build(BuildContext context) {
     return BlocBuilder<TodoBloc, TodosState>(
       builder: (context, state) {
-        if (state is TodosLoaded) {
+        if (state is TodosLoaded && start == true) {
           return ListView.builder(
               shrinkWrap: true,
               itemCount: state.todos.length,
               itemBuilder: (BuildContext context, int index) {
-                return _todoCard(context, state.todos[index]);
+                return _todoCard(
+                  context,
+                  state.todos[index],
+                  index,
+                );
               });
         }
-        if (state is TodosEmpty) {
-          return Center(
-              child: Container(
-            child: const Text(
-              'Nothing to do',
-              style: TextStyle(
-                  color: Color.fromARGB(137, 5, 156, 156),
-                  fontFamily: 'Times New Roman'),
-            ),
+        if (start == false) {
+          return const Center(
+              child: Text(
+            'Nothing to do',
+            style: TextStyle(
+                color: Color.fromARGB(137, 5, 156, 156),
+                fontFamily: 'Times New Roman'),
           ));
         } else {
           return const Center(child: Text('Sumething went wrong!!'));
@@ -45,7 +44,12 @@ class _ToDOState extends State<ToDO> {
   }
 }
 
-Card _todoCard(BuildContext context, Todo todo) {
+Card _todoCard(BuildContext context, Todo todo, int index) {
+  if (todo.iscomplected == true) {
+    colortodo = const Color.fromARGB(255, 1, 255, 162);
+  } else if (todo.iscomplected == false) {
+    colortodo = const Color.fromARGB(255, 5, 156, 156);
+  }
   return Card(
       color: colortodo,
       borderOnForeground: true,
@@ -54,21 +58,44 @@ Card _todoCard(BuildContext context, Todo todo) {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("${todo.id}"),
-            Text('${todo.text}'),
+            Container(
+              width: 25,
+              height: 25,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.black,
+                    width: 1.5,
+                  ),
+                  color: colortodo,
+                  borderRadius: BorderRadius.circular(15)),
+              child: Center(
+                child: Text("${index + 1}",
+                    style: const TextStyle(
+                      fontFamily: 'Times New Roman',
+                    )),
+              ),
+            ),
+            Text(
+              todo.text,
+              style:
+                  const TextStyle(fontFamily: 'Times New Roman', fontSize: 18),
+            ),
             Row(
               children: [
                 IconButton(
                   icon: const Icon(Icons.done_outline),
                   onPressed: () {
-                    colortodo = Colors.red;
-                    // context.read<TodoBloc>().add(ToDoDone());
+                    context
+                        .read<TodoBloc>()
+                        .add(DoneTodo(todo: todo.copyWith(iscomplected: true)));
                   },
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete_outline),
                   onPressed: () {
-                    context.read<TodoBloc>().add(DeleteTodo(todo: todo));
+                    context
+                        .read<TodoBloc>()
+                        .add(DeleteTodo(todo: todo.copyWith(iscanceled: true)));
                   },
                 ),
               ],

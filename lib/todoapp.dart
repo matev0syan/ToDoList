@@ -21,9 +21,9 @@ class ToDoApp extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       ),
       body: Column(
-        children: [
-         InputSpace(),
-          const ToDoContainer(),
+        children: const [
+          InputSpace(),
+          ToDoContainer(),
         ],
       ),
     );

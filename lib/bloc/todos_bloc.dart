@@ -1,22 +1,20 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'todo_item.dart';
+import 'package:flutter/cupertino.dart';
+import '../models/todo_model.dart';
 
 part 'todos_event.dart';
 part 'todos_state.dart';
 
 int indexs = 0;
-int id = 0;
+bool start = false;
+Color colortodo = const Color.fromARGB(255, 5, 156, 156);
 
 class TodoBloc extends Bloc<TodosEvent, TodosState> {
-  TodoBloc() : super(TodosEmpty()) {
-    on<LoadTodo>(_onLoadTodus);
+  TodoBloc() : super(const TodosLoaded()) {
     on<AddTodo>(_onAddTodo);
-    // on<DeleteTodo>(_onDeleteTodo);
-  }
-
-  void _onLoadTodus(LoadTodo event, Emitter<TodosState> emit) {
-    emit(TodosLoaded(todos: event.todos));
+    on<DoneTodo>(_onDoneTodo);
+    on<DeleteTodo>(_onDeleteTodo);
   }
 
   void _onAddTodo(AddTodo event, Emitter<TodosState> emit) {
@@ -29,20 +27,28 @@ class TodoBloc extends Bloc<TodosEvent, TodosState> {
       );
     }
   }
+
+  void _onDoneTodo(DoneTodo event, Emitter<TodosState> emit) {
+    final state = this.state;
+    if (state is TodosLoaded) {
+      List<Todo> todos = (state.todos.map((todo) {
+        return todo.id == event.todo.id ? event.todo : todo;
+      })).toList();
+      emit(
+        TodosLoaded(
+          todos: todos,
+        ),
+      );
+    }
+  }
+
+  void _onDeleteTodo(DeleteTodo event, Emitter<TodosState> emit) {
+    final state = this.state;
+    if (state is TodosLoaded) {
+      List<Todo> todos = state.todos.where((todo) {
+        return todo.id != event.todo.id;
+      }).toList();
+      emit(TodosLoaded(todos: todos));
+    }
+  }
 }
-
-//   void _onDeleteTodo(DeleteTodo event, Emitter<TodosState> emit) {
-//     final state = this.state;
-//     if (state is TodosLoaded) {
-//       List<Todo> todos = state.todos.where((todo) {
-//         return todo.id != event.todo.id;
-//       }).toList();
-
-//       emit(
-//         TodosLoaded(
-//           todos: todos,
-//         ),
-//       );
-//     }
-//   }
-// }

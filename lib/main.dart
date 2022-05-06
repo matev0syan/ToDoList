@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todolist/bloc/todo_item.dart';
 import 'bloc/todos_bloc.dart';
 import 'todoapp.dart';
 
@@ -11,19 +10,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              TodoBloc()..add(LoadTodo(todos: [Todo(id: 'id', text: 'text')])),
-        ),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: BlocProvider(
-          create: (context) => TodoBloc(),
-          child: ToDoApp(),
-        ),
+    // return MultiBlocProvider(
+    //   providers: [
+    //     BlocProvider(
+    //       create: (context) =>
+    //           TodoBloc()..add(LoadTodo(todos: [Todo(id: 'id', text: 'text')])),
+    //     ),
+    //   ],
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: BlocProvider(
+        create: (context) => TodoBloc(),
+        child: const ToDoApp(),
       ),
     );
   }
